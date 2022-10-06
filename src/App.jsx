@@ -1,33 +1,16 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import "./App.css";
+import Editor from "./components/Editor";
+import Preview from "./components/Preview";
+import { placeholder } from "./globals";
+import { classNames } from "./utils/class-names";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [markdown, setMarkdown] = useState(placeholder);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 min-w-[300px] max-w-7xl m-auto border-4 divide-y-4 md:divide-y-0 md:divide-x-4 my-8">
+      <Editor markdown={markdown} setMarkdown={setMarkdown} className="z-10" />
+      <Preview markdown={markdown} />
     </div>
   );
 }
